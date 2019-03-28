@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+	<img src = "{{ url_for('static', filename='img/' + flower.image_file) }}" width="300" height="300">
+
+
+	<p>"{{ flower.title }}" &nbsp Florist: {{ flower.florist.first_name }}&nbsp{{ flower.florist.last_name}} </p>
+	<p>Price: {{ flower.price }}</p>
+	<p>Description: {{flower.description}}</p>
+	<a class="" href="/add_to_cart/{{flower.id}}">Add to Cart</a>&nbsp|
+	<a class="" href="/add_to_wishlist/{{flower.id}}">Add to Wishlist</a>&nbsp|
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<h1>Flora & Flora</h1>
+
+
+<div class="search-container">
+    <form method="POST">
+      <input type="text" placeholder="Search..." name="home">
+      <button type="submit">Search</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="orderasc">Low-High</a>&nbsp|
+    <a class="dropdown-item" href="orderdesc">High-Low</a>&nbsp|
+</div>
+
+
+
+
+
+
+
+
+  {% for flower in flowers %}
+<div style="float:left; margin:40px; width: 295px; padding: 40px;">
+  <a href="{{ url_for('flower', flower_id=flower.id) }}">
+  	<img src = "{{ url_for('static', filename='img/' + flower.image_file) }}" width="300" height="300"></a>
+    <!--<a href="{{ url_for('flower', flower_id=flower.id) }}">-->
+      <p>"{{ flower.title }}" &nbsp Florist: {{ flower.florist.first_name }}&nbsp{{ flower.florist.last_name}}</p></a>
+      <p>Price (£): {{ flower.price }}</p>
+      <p>Description: {{flower.description}}</p>
+    <a class="" href="/add_to_cart/{{flower.id}}">Add to Cart</a>&nbsp|<br/>
+
+    <a class="" href="/add_to_wishlist/{{flower.id}}">Add to Wishlist</a>&nbsp|
+
+</div>
+
+  {% endfor %}
+</div>
+{% endblock content %}
